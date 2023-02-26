@@ -16,7 +16,7 @@ set(USE_HAL 1)
 set(STM32_CUBE_F4_PATH ${CMAKE_CURRENT_SOURCE_DIR}/BSP)
 
 # Get CMSIS package needed for compilation
-find_package(CMSIS COMPONENTS STM32F411VE REQUIRED)
+find_package(CMSIS COMPONENTS STM32F469NI REQUIRED)
 
 # Set project sources
 set(PROJECT_SOURCES
@@ -31,10 +31,10 @@ if (${USE_HAL})
     message("Building with HAL")
     add_definitions(-DUSE_HAL)
     find_package(HAL COMPONENTS STM32F4 REQUIRED)
-    set(LIBRARIES CMSIS::STM32::F411VE HAL::STM32::F4::GPIO)
+    set(LIBRARIES CMSIS::STM32::F469NI HAL::STM32::F4::GPIO)
 else()
     message("Building without HAL")
-    set(LIBRARIES CMSIS::STM32::F411VE)
+    set(LIBRARIES CMSIS::STM32::F469NI)
 endif()
 
 # Set the project executable
@@ -50,3 +50,7 @@ target_link_libraries(${PROJECT_NAME}
 stm32_print_size_of_target(${PROJECT_NAME})
 stm32_generate_binary_file(${PROJECT_NAME})
 stm32_generate_hex_file(${PROJECT_NAME})
+
+# set(CMAKE_C_COMPILER ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/gcc-arm-none-eabi-7-2018-q2-update/bin/arm-none-eabi-gcc)
+# set(CMAKE_CXX_COMPILER ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/gcc-arm-none-eabi-7-2018-q2-update/bin/arm-none-eabi-g++)
+# set(CMAKE_ASM_COMPILER ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/gcc-arm-none-eabi-7-2018-q2-update/bin/arm-none-eabi-gcc)

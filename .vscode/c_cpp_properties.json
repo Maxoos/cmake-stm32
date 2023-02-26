@@ -6,7 +6,7 @@
       "includePath": [
         "${workspaceFolder}/**"
       ],
-      "compilerPath": "/usr/local/bin/arm-none-eabi-g++",
+      "compilerPath": "${workspaceFolder}/thirdparty/gcc-arm-none-eabi-7-2018-q2-update",
       "cStandard": "gnu11",
       "cppStandard": "gnu++14",
       "compileCommands": "${workspaceFolder}/build/compile_commands.json",

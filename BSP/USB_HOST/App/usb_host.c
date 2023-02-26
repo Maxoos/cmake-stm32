@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -89,14 +89,6 @@ void MX_USB_HOST_Init(void)
   /* USER CODE END USB_HOST_Init_PostTreatment */
 }
 
-/*
- * Background task
- */
-void MX_USB_HOST_Process(void)
-{
-  /* USB Host Background task */
-  USBH_Process(&hUsbHostFS);
-}
 /*
  * user callback definition
  */

@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -47,6 +47,6 @@ void MX_DriverVbusFS(uint8_t state)
     data = GPIO_PIN_SET;
   }
   /* USER CODE END PREPARE_GPIO_DATA_VBUS_FS */
-  HAL_GPIO_WritePin(GPIOC,GPIO_PIN_0,(GPIO_PinState)data);
+  HAL_GPIO_WritePin(GPIOB,GPIO_PIN_2,(GPIO_PinState)data);
 }
 

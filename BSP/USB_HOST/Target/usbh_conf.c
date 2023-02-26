@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2022 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -70,28 +70,28 @@ void HAL_HCD_MspInit(HCD_HandleTypeDef* hcdHandle)
 
     __HAL_RCC_GPIOA_CLK_ENABLE();
     /**USB_OTG_FS GPIO Configuration
-    PA9     ------> USB_OTG_FS_VBUS
-    PA10     ------> USB_OTG_FS_ID
-    PA11     ------> USB_OTG_FS_DM
     PA12     ------> USB_OTG_FS_DP
+    PA11     ------> USB_OTG_FS_DM
+    PA10     ------> USB_OTG_FS_ID
+    PA9     ------> USB_OTG_FS_VBUS
     */
-    GPIO_InitStruct.Pin = VBUS_FS_Pin;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(VBUS_FS_GPIO_Port, &GPIO_InitStruct);
-
-    GPIO_InitStruct.Pin = OTG_FS_ID_Pin|OTG_FS_DM_Pin|OTG_FS_DP_Pin;
+    GPIO_InitStruct.Pin = USB_FS1_P_Pin|USB_FS1_N_Pin|USB_FS1_ID_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
     GPIO_InitStruct.Alternate = GPIO_AF10_OTG_FS;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+    GPIO_InitStruct.Pin = VBUS_FS1_Pin;
+    GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_NOPULL;
+    HAL_GPIO_Init(VBUS_FS1_GPIO_Port, &GPIO_InitStruct);
+
     /* Peripheral clock enable */
     __HAL_RCC_USB_OTG_FS_CLK_ENABLE();
 
     /* Peripheral interrupt init */
-    HAL_NVIC_SetPriority(OTG_FS_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(OTG_FS_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(OTG_FS_IRQn);
   /* USER CODE BEGIN USB_OTG_FS_MspInit 1 */
 
@@ -110,12 +110,12 @@ void HAL_HCD_MspDeInit(HCD_HandleTypeDef* hcdHandle)
     __HAL_RCC_USB_OTG_FS_CLK_DISABLE();
 
     /**USB_OTG_FS GPIO Configuration
-    PA9     ------> USB_OTG_FS_VBUS
-    PA10     ------> USB_OTG_FS_ID
-    PA11     ------> USB_OTG_FS_DM
     PA12     ------> USB_OTG_FS_DP
+    PA11     ------> USB_OTG_FS_DM
+    PA10     ------> USB_OTG_FS_ID
+    PA9     ------> USB_OTG_FS_VBUS
     */
-    HAL_GPIO_DeInit(GPIOA, VBUS_FS_Pin|OTG_FS_ID_Pin|OTG_FS_DM_Pin|OTG_FS_DP_Pin);
+    HAL_GPIO_DeInit(GPIOA, USB_FS1_P_Pin|USB_FS1_N_Pin|USB_FS1_ID_Pin|VBUS_FS1_Pin);
 
     /* Peripheral interrupt Deinit*/
     HAL_NVIC_DisableIRQ(OTG_FS_IRQn);
