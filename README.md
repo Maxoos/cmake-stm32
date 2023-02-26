@@ -1,6 +1,13 @@
 ![](images/header.png)
 # CMAKE stm32F4 example 2022
 
+NOTE: Adjusted to work on Mac os X. Before using install: arm-none-eabi-gcc
+brew install arm-none-eabi-gcc
+
+Extra resources:
+ - https://github.com/Teivaz/cmake-stm32
+ - https://medium.com/@erbo-engineering/using-vs-code-for-embedded-stm32-development-14405ed4ac82
+
 **To build install:**
  * cmake and make
  * arm-none-eabi toolchain: https://xpack.github.io/blog/2020/07/03/arm-none-eabi-gcc-v9-3-1-1-1-released/
