@@ -13,6 +13,7 @@ Extra resources:
  * arm-none-eabi toolchain: https://xpack.github.io/blog/2020/07/03/arm-none-eabi-gcc-v9-3-1-1-1-released/
  * make sure cmake,make,arm-none-eabi-gcc are reachable from path
  * openocd 0.11.0 (https://github.com/openocd-org/openocd/tree/v0.11.0)
+ * Open CmakeList and change the chip version, for exmaple to work with STM32F411 include STM32F411XE. This will inclose the correct h file BSP
 
 **Run: without vscode magic ;)**
 1. `git submodule update --init`
